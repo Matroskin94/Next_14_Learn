@@ -1,9 +1,11 @@
-import { sql } from "@vercel/postgres";
-import { LatestInvoiceRaw } from "../definitions";
-import { formatCurrency } from "../utils";
+import { sql } from '@vercel/postgres';
+import { unstable_noStore as noStore } from 'next/cache';
+import { LatestInvoiceRaw } from '../definitions';
+import { formatCurrency } from '../utils';
 
 export async function fetchLatestInvoices() {
   try {
+    noStore();
     const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices

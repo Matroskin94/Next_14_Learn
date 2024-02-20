@@ -1,9 +1,10 @@
-import { sql } from "@vercel/postgres";
-import { Revenue } from "../definitions";
+import { sql } from '@vercel/postgres';
+import { unstable_noStore as noStore } from 'next/cache';
+import { Revenue } from '../definitions';
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
-  // This is equivalent to in fetch(..., {cache: 'no-store'}).
+  noStore();
 
   try {
     // Artificially delay a response for demo purposes.

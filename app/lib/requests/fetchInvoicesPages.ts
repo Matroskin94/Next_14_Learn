@@ -1,9 +1,11 @@
 import { sql } from '@vercel/postgres';
+import { unstable_noStore as noStore } from 'next/cache';
 
 const ITEMS_PER_PAGE = 6;
 
 export async function fetchInvoicesPages(query: string) {
   try {
+    noStore();
     const count = await sql`SELECT COUNT(*)
     FROM invoices
     JOIN customers ON invoices.customer_id = customers.id
