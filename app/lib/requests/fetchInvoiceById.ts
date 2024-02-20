@@ -1,8 +1,10 @@
-import { sql } from "@vercel/postgres";
-import { InvoiceForm } from "../definitions";
+import { sql } from '@vercel/postgres';
+import { unstable_noStore as noStore } from 'next/cache';
+import { InvoiceForm } from '../definitions';
 
 export async function fetchInvoiceById(id: string) {
   try {
+    noStore();
     const data = await sql<InvoiceForm>`
       SELECT
         invoices.id,

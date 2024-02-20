@@ -1,5 +1,6 @@
-import { sql } from "@vercel/postgres";
-import { InvoicesTable } from "../definitions";
+import { sql } from '@vercel/postgres';
+import { unstable_noStore as noStore } from 'next/cache';
+import { InvoicesTable } from '../definitions';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -7,6 +8,7 @@ export async function fetchFilteredInvoices(
   query: string,
   currentPage: number,
 ) {
+  noStore();
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
