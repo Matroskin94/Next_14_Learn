@@ -2,15 +2,18 @@ import Image from 'next/image';
 import InvoiceStatus from '@/app/ui/invoices/status';
 import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
 import { fetchFilteredInvoices } from '@/app/lib/requests';
-import { DeleteInvoice, UpdateInvoice } from '../buttons';
+import { FC } from 'react';
+import { DeleteInvoice, UpdateInvoice } from '@/app/ui/buttons';
 
-export default async function InvoicesTable({
-  query,
-  currentPage,
-}: {
+interface IInvoiceTableProps {
   query: string;
   currentPage: number;
-}) {
+}
+
+export const InvoicesTable: FC<IInvoiceTableProps> = async ({
+  query,
+  currentPage,
+}) => {
   const invoices = await fetchFilteredInvoices(query, currentPage);
 
   return (
@@ -121,4 +124,4 @@ export default async function InvoicesTable({
       </div>
     </div>
   );
-}
+};
