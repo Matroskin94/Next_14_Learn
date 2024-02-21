@@ -4,8 +4,8 @@ import { formatCurrency } from '../utils';
 import { CustomersTableType } from '../definitions';
 
 export async function fetchFilteredCustomers(query: string) {
-  try {
-    noStore();
+  noStore();
+	try {
     const data = await sql<CustomersTableType>`
 		SELECT
 		  customers.id,
