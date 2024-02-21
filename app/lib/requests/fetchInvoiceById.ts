@@ -3,8 +3,8 @@ import { unstable_noStore as noStore } from 'next/cache';
 import { InvoiceForm } from '../definitions';
 
 export async function fetchInvoiceById(id: string) {
+  noStore();
   try {
-    noStore();
     const data = await sql<InvoiceForm>`
       SELECT
         invoices.id,

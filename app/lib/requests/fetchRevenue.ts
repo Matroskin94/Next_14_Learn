@@ -5,7 +5,6 @@ import { Revenue } from '../definitions';
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
   noStore();
-
   try {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)

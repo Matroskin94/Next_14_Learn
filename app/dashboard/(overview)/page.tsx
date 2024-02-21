@@ -8,7 +8,7 @@ import {
 } from '../components';
 import { Statistics, StatisticsSkeleton } from '../components/Statistics';
 
-const DashboardPage = async () => {
+const DashboardPage = () => {
   return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
