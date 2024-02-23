@@ -6,10 +6,10 @@ interface IUpdateInvoiceProps {
   id: string;
 }
 
-export const UpdateInvoice: FC<IUpdateInvoiceProps> = () => {
+export const UpdateInvoice: FC<IUpdateInvoiceProps> = ({ id }) => {
   return (
     <Link
-      href="/dashboard/invoices"
+      href={`/dashboard/invoices/${id}/edit`}
       className="rounded-md border p-2 hover:bg-gray-100"
     >
       <PencilIcon className="w-5" />
