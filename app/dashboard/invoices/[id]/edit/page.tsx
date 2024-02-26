@@ -2,6 +2,7 @@ import { Breadcrumbs } from '@/app/ui/Breadcrumbs';
 import { EditInvoiceForm } from './components';
 import { FC } from 'react';
 import { fetchCustomers, fetchInvoiceById } from '@/app/lib/requests';
+import { notFound } from 'next/navigation';
 
 interface IEditInvoicePageProps {
   params: {
@@ -14,6 +15,10 @@ const EditInvoicePage: FC<IEditInvoicePageProps> = async ({ params: { id } }) =>
     fetchInvoiceById(id),
     fetchCustomers(),
   ]);
+
+  if (!invoice) {
+    notFound();
+  }
   
   return (
     <main>
