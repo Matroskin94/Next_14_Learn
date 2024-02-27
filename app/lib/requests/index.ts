@@ -7,3 +7,4 @@ export { fetchInvoicesPages } from './fetchInvoicesPages';
 export { fetchLatestInvoices } from './fetchLatestInvoices';
 export { fetchRevenue } from './fetchRevenue';
 export { getUser } from './getUser';
+export { authenticate } from './authenticate'
