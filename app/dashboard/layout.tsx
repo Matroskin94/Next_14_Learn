@@ -1,4 +1,14 @@
+import { Metadata } from 'next';
 import { SideNav } from './components';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Acme Dashboard',
+    default: 'Acme Dashboard',
+  },
+  description: 'The official Next.js Course Dashboard, built with App Router.',
+  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+};
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (

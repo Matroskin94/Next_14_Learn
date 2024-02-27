@@ -1,6 +1,11 @@
 import { fetchCustomers } from "@/app/lib/requests";
 import { CreateInvoiceForm } from "./components";
 import { Breadcrumbs } from "@/app/ui/Breadcrumbs";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Create Invoice',
+};
 
 const CreatePage = async () => {
   const customers = await fetchCustomers();

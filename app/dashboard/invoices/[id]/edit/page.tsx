@@ -3,6 +3,11 @@ import { EditInvoiceForm } from './components';
 import { FC } from 'react';
 import { fetchCustomers, fetchInvoiceById } from '@/app/lib/requests';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Edit Invoice',
+};
 
 interface IEditInvoicePageProps {
   params: {
