@@ -2,9 +2,17 @@ import { Search } from '@/app/ui/Search';
 import { CreateInvoice } from '@/app/ui/buttons';
 import { lusitana } from '@/app/ui/fonts';
 import { FC, Suspense } from 'react';
-import { InvoicesTable, InvoicesTableSkeleton } from './components/InvoicesTable';
+import {
+  InvoicesTable,
+  InvoicesTableSkeleton,
+} from './components/InvoicesTable';
 import { fetchInvoicesPages } from '@/app/lib/requests';
 import { Pagination } from './components/Pagination';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Invoices',
+};
 
 interface IInvoicePageProps {
   searchParams?: {
