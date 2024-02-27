@@ -1,15 +1,26 @@
+'use client';
+
+import { authenticate } from '@/app/lib/requests';
+import { Button } from '@/app/ui/button';
 import { lusitana } from '@/app/ui/fonts';
 import {
+  ArrowRightIcon,
   AtSymbolIcon,
-  KeyIcon,
   ExclamationCircleIcon,
+  KeyIcon,
 } from '@heroicons/react/24/outline';
-import { ArrowRightIcon } from '@heroicons/react/20/solid';
-import { Button } from './button';
+import { FC } from 'react';
+import { useFormState, useFormStatus } from 'react-dom';
 
-export default function LoginForm() {
+export const LoginForm: FC = () => {
+  const [authenticationError, authenticateUserAction] = useFormState(
+    authenticate,
+    undefined,
+  );
+  const { pending: loginPending } = useFormStatus();
+
   return (
-    <form className="space-y-3">
+    <form className="space-y-3" action={authenticateUserAction}>
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
         <h1 className={`${lusitana.className} mb-3 text-2xl`}>
           Please log in to continue.
@@ -55,19 +66,22 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
-        <LoginButton />
-        <div className="flex h-8 items-end space-x-1">
-          {/* Add form errors here */}
+        <Button className="mt-4 w-full" aria-disabled={loginPending}>
+          Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+        </Button>
+        <div
+          className="flex h-8 items-end space-x-1"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {authenticationError && (
+            <>
+              <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+              <p className="text-sm text-red-500">{authenticationError}</p>
+            </>
+          )}
         </div>
       </div>
     </form>
   );
-}
-
-function LoginButton() {
-  return (
-    <Button className="mt-4 w-full">
-      Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
-    </Button>
-  );
-}
+};
